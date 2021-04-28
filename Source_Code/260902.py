@@ -7,13 +7,28 @@ class Add:
 
     def addrecord(self):
         print("\n Enter students details\n")
+        f = open("student.txt", "r")
         n = input("Enter Name= \n")
         r = input("Enter Rollno= \n")
+        flag=0
+        while (True):
+            t = f.readline()
+            l = len(t)
+            if (l == 0):
+                break
+            g = t.split('-')
+            if (g[1] == r):
+                print("Roll no already exists")
+                flag=1
+        if(flag==1):
+            quit()
+        f.close()
         cl = input("Enter class= \n")
         fn = input("Enter Father name= \n")
         mn = input("Enter the Mother Name= \n")
         f = open("student.txt", "a")
         f.write(n + "-" + r + "-" + cl + "-" + fn + "-" + mn + "\n")
+        print("Successfully added the record")
         f.close()
 
 
@@ -21,13 +36,13 @@ class Add:
 class Print_R:
     # Class for Printing the Student Records
     def printrecord(self):
-        print("\n 2. Display ALL Records")
+        print("\n --- Displaying ALL Records----\n")
         f = open("student.txt", "r")
         while (True):
             d = f.readline()
             l = len(d)
             if (l == 0):
-                break;
+                break
             print(d.strip())
 
 
@@ -38,46 +53,52 @@ class Search_n:
         print("\n 3. Enter student name to search")
         search = input()
         f = open("student.txt", "r")
-
-        while (True):
+        flag=0
+        while(True):
             t = f.readline()
             l = len(t)
             if (l == 0):
                 break
             g = t.split('-')
             if (g[0] == search):
-                print("\n Record Found")
+                print("\n --- Record Found----\n")
                 print("Name is", g[0])
                 print("Roll no is", g[1])
                 print("class is ", g[2])
                 print("Father name is", g[3])
                 print("Mother name is", g[4])
-            else:
-                print("Not Found")
+                flag=1
+                break
 
+        if(flag==0):
+            print("Record Not Found")
+        f.close()
 
 class Search_r:
     #  class for searching the student record using rollno
     def searchrollno(self):
-        print("\n 4. Search student record by Rollno")
+        print("Enter Student Roll No To Search : \n")
         search = input()
         f = open("student.txt", "r")
         flag = 0
-        while (True):
+        while(True):
             t = f.readline()
             l = len(t)
             if (l == 0):
                 break
             g = t.split('-')
             if (g[1] == search):
-                print("\n Record Found")
+                print("\n --- Record Found---\n")
                 print("Name is", g[0])
                 print("Roll no is", g[1])
                 print("class is ", g[2])
                 print("Father name is", g[3])
                 print("Mother name is", g[4])
-            else:
-                print("Not Found")
+                flag=1
+                break
+        if(flag==0):
+            print("Record Not Found")
+
 
 class Delete_r:
     # Class for Deleting the student Record
@@ -122,8 +143,8 @@ class Update_r:
                 break
             g = t.split('-')
             if (g[0] == search):
-                print("\nCurrent Details is\n", t)
-                print("\nName-Rollno-Class-Fathername-Mothername\n")
+                print("Current Details is : \n", t)
+                print("Format : Name-Rollno-Class-Fathername-Mothername\n")
                 print("-----------------------")
                 newroll = input("Update the Roll no / Press Enter to Continue=\n")
                 newclass = input("Update the Class / Press Enter to Continue=\n")
@@ -164,26 +185,27 @@ def main():
         print("5. Update The Record\n")
         print("6. Delete The Record\n")
         print("7. Exit")
+        print("\n----------------------------------------------------------\n")
         n=int(input("Enter the choice:\n"))
         if(n==1):
             a1=Add()
             a1.addrecord()
-        if(n==2):
-           p1=Print_R
+        elif(n==2):
+           p1=Print_R()
            p1.printrecord()
-        if(n==3):
-            s1=Search_n
+        elif(n==3):
+            s1=Search_n()
             s1.searchname()
-        if(n==4):
-            s2=Search_r
+        elif(n==4):
+            s2=Search_r()
             s2.searchrollno()
-        if(n==5):
-            u1=Update_r
+        elif(n==5):
+            u1=Update_r()
             u1.updaterecord()
-        if(n==6):
-            d1=Delete_r
+        elif(n==6):
+            d1=Delete_r()
             d1.deleterecord()
-        if(n==7):
+        elif(n==7):
             exitt()
         else:
             print("Wrong choice")
