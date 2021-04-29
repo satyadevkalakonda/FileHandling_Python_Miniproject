@@ -9,6 +9,12 @@
   - The administrator able to delete the student record
   - The administrator able to update the student record
 
+# Usage Of The Project
+```sh
+>> cd 260902_Python_Miniproject/Source_Code
+>> python3 260902.py
+```
+
 - Home Screen 
 
 ![1](https://user-images.githubusercontent.com/36398260/116388646-aa60b980-a839-11eb-8238-d9f8e54087b6.PNG)
