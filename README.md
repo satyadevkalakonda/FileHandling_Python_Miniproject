@@ -25,7 +25,7 @@
 
 ![4](https://user-images.githubusercontent.com/36398260/116388788-d54b0d80-a839-11eb-9048-f23ee9d43fd8.PNG)
 
-- Searching Record using rollno
+- Searching Record using Rollno
 
 ![5](https://user-images.githubusercontent.com/36398260/116388839-e562ed00-a839-11eb-85e5-530337f05c85.PNG)
 
